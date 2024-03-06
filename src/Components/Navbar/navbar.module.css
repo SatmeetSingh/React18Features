@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  justify-content: space-around;
+}
+
+.navbar input[type="text"] {
+  padding: 8px 15px;
+  border-radius: 7000px;
+  outline: none;
+  font-size: large;
+}
