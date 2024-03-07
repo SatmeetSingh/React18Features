@@ -2,7 +2,7 @@ import useAPI from "../../utils/Context";
 import styles from "./table.module.css";
 
 function Datatable() {
-  const { users } = useAPI();
+  const { users, handleDelete } = useAPI();
   return (
     <div className={styles.table}>
       <table>
@@ -22,11 +22,21 @@ function Datatable() {
               <td>{val.name}</td>
               <td>{val.address.city}</td>
               <td>{val.email}</td>
-              <td>{val.address.zipcode}</td>
+              <td
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                {val.address.zipcode}
+                <button onClick={() => handleDelete(val.id)}>❎</button>
+              </td>
             </tr>
           </tbody>
         ))}
       </table>
+      {(users.length ?? 0) === 0 && <h1>Data Doesn&apos;t match</h1>}
     </div>
   );
 }
