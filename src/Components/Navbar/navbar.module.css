@@ -1,13 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+
 .navbar {
   display: flex;
   align-items: center;
   padding: 1rem;
   justify-content: space-around;
+  background-color: #eeeeee;
+  font-family: "Poppins", "sans-serif"
+}
+
+.NavSearch{
+  position: relative;
+  display: flex;
+ 
+ 
+}
+.NavSearch i{
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  color:#D3D3D3;
+  transform: translateY(-50%);
+  font-size: 15px;
 }
 
 .navbar input[type="text"] {
-  padding: 8px 15px;
+  width: 100%;
+  padding: 8px 35px;
   border-radius: 7000px;
   outline: none;
-  font-size: large;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+  
 }
+

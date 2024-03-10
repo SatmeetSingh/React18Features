@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 import styles from "./form.module.css";
-import { Button, FormControl, FormLabel, Input, Stack } from "@mui/material";
 import useAPI from "../../utils/Context";
 
-function FormData() {
+function FormData({ toggleForm }) {
   const {
     handlenameChange,
     handlePhoneNumberChange,
@@ -22,201 +22,159 @@ function FormData() {
     handlelocation,
   } = useAPI();
   return (
-    <div className={styles.div}>
-      <div className={styles.box}>
-        <p
-          onClick={handleClose}
-          style={{
-            position: "absolute",
-            right: "5%",
-            top: "-4%",
-            cursor: "pointer",
-          }}
-        >
-          ❌
-        </p>
-        <form className={styles.form}>
-          <Stack spacing={2}>
-            <div className={styles.gap}>
-              <FormControl>
-                <Stack spacing={2}>
-                  <FormControl>
-                    <Stack spacing={1}>
-                      <FormLabel>Name</FormLabel>
-                      <Input
-                        placeholder="name"
-                        type="text"
-                        onChange={(e) => handlenameChange(e.target.value)}
-                        className={styles.name}
-                        required
-                      />
-                    </Stack>
-                  </FormControl>
-                  <FormControl>
-                    <Stack spacing={0.5}>
-                      <FormLabel>Username</FormLabel>
-                      <Input
-                        placeholder="username"
-                        onChange={(e) => handleuserChange(e.target.value)}
-                        className={styles.name}
-                        required
-                      />
-                    </Stack>
-                  </FormControl>
-                  <FormControl>
-                    <Stack spacing={0.5}>
-                      <FormLabel>Email</FormLabel>
-                      <Input
-                        placeholder="Email"
-                        type="email"
-                        onChange={(e) => handleEmailChange(e.target.value)}
-                        required
-                        className={styles.name}
-                      />
-                    </Stack>
-                  </FormControl>
-                  <FormControl>
-                    <Stack spacing={0.5}>
-                      <FormLabel>PhoneNumber</FormLabel>
-                      <Input
-                        placeholder="0000000000"
-                        type="number"
-                        onChange={(e) =>
-                          handlePhoneNumberChange(e.target.value)
-                        }
-                        required
-                        className={styles.name}
-                      />
-                    </Stack>
-                  </FormControl>
-                  <FormControl>
-                    <Stack spacing={0.5}>
-                      <FormLabel>Website</FormLabel>
-                      <Input
-                        placeholder="https://"
-                        onChange={(e) => handleWebsiteChange(e.target.value)}
-                        required
-                        className={styles.name}
-                      />
-                    </Stack>
-                  </FormControl>
-                </Stack>
-              </FormControl>
-              <FormControl>
-                <Stack spacing={2}>
-                  <FormLabel
-                    sx={{ fontWeight: "bold", fontSize: "h6.fontSize" }}
-                  >
-                    Address
-                  </FormLabel>
-                  <FormControl>
-                    <Stack spacing={0.5}>
-                      <FormLabel>Street</FormLabel>
-                      <Input
-                        placeholder=""
-                        type="text"
-                        onChange={(e) => handleStreetChange(e.target.value)}
-                        required
-                        className={styles.name}
-                      />
-                    </Stack>
-                  </FormControl>
-                  <FormControl>
-                    <Stack spacing={0.5}>
-                      <FormLabel>Suite</FormLabel>
-                      <Input
-                        placeholder=""
-                        onChange={(e) => handlesuiteChange(e.target.value)}
-                        required
-                        className={styles.name}
-                      />
-                    </Stack>
-                  </FormControl>
-                  <FormControl>
-                    <Stack spacing={0.5}>
-                      <FormLabel>City</FormLabel>
-                      <Input
-                        placeholder=""
-                        onChange={(e) => handleCityChange(e.target.value)}
-                        required
-                        className={styles.name}
-                      />
-                    </Stack>
-                  </FormControl>
-                  <FormControl>
-                    <Stack spacing={0.5}>
-                      <FormLabel>Zip Code</FormLabel>
-                      <Input
-                        placeholder=""
-                        onChange={(e) => handleCodeChange(e.target.value)}
-                        required
-                        className={styles.name}
-                      />
-                    </Stack>
-                  </FormControl>
-                  <FormControl>
-                    <Stack spacing={0.5}>
-                      <FormLabel>Lat,Long</FormLabel>
-                      <Input
-                        placeholder=""
-                        onChange={(e) => handlePlaceChange(e.target.value)}
-                        className={styles.name}
-                      />
-                      <button className={styles.btn} onClick={handlelocation}>
-                        Click
-                      </button>
-                    </Stack>
-                  </FormControl>
-                </Stack>
-              </FormControl>
-            </div>
-            <FormControl>
-              <Stack spacing={2}>
-                <FormLabel sx={{ fontWeight: "bold", fontSize: "h6.fontSize" }}>
-                  Company
-                </FormLabel>
-                <FormControl>
-                  <Stack spacing={0.5}>
-                    <FormLabel>Name</FormLabel>
-                    <Input
-                      placeholder=""
-                      onChange={(e) => handleCompanyname(e.target.value)}
-                      required
-                      className={styles.name}
-                    />
-                  </Stack>
-                </FormControl>
-                <FormControl>
-                  <Stack spacing={0.5}>
-                    <FormLabel>CatchPhrase</FormLabel>
-                    <Input
-                      placeholder=""
-                      onChange={(e) => handlecatchPhrase(e.target.value)}
-                      required
-                      className={styles.name}
-                    />
-                  </Stack>
-                </FormControl>
-                <FormControl>
-                  <Stack spacing={0.5}>
-                    <FormLabel>Bs</FormLabel>
-                    <Input
-                      placeholder=""
-                      onChange={(e) => handleBsChange(e.target.value)}
-                      className={styles.name}
-                    />
-                  </Stack>
-                </FormControl>
-              </Stack>
-            </FormControl>
+    <form className={styles.formstyle}>
+      <h1>Add New User</h1>
+      <p
+        onClick={() => {
+          handleClose();
+          toggleForm(false);
+        }}
+        style={{
+          position: "absolute",
+          top: "1%",
+          right: "1%",
+          cursor: "pointer",
+          border: "none",
+        }}
+      >
+        <i className="fa-solid fa-xmark"></i>
+      </p>
+      <ul>
+        <li>
+          <label>
+            Name <span className="required">*</span>
+          </label>
+          <input
+            placeholder="Name"
+            type="text"
+            onChange={(e) => handlenameChange(e.target.value)}
+            className={styles.fieldDivided}
+            required
+          />{" "}
+          <input
+            type="text"
+            placeholder="Username"
+            onChange={(e) => handleuserChange(e.target.value)}
+            className={styles.fieldDivided}
+            required
+          />
+        </li>
+        <li>
+          <label>
+            Email <span className="required">*</span>
+          </label>
+          <input
+            placeholder="Email"
+            type="email"
+            onChange={(e) => handleEmailChange(e.target.value)}
+            required
+            className={styles.fieldlong}
+          />
+        </li>
+        <li>
+          <label>
+            Phone <span className="required">*</span>
+          </label>
 
-            <Button size="md" color="primary" onClick={handleSubmit}>
-              Submit
-            </Button>
-          </Stack>
-        </form>
-      </div>
-    </div>
+          <input
+            placeholder="0000000000"
+            type="number"
+            onChange={(e) => handlePhoneNumberChange(e.target.value)}
+            required
+            className={styles.fieldlong}
+          />
+        </li>
+
+        <li>
+          <label>
+            Company Details <span className="required">*</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Company Name"
+            onChange={(e) => handleCompanyname(e.target.value)}
+            required
+            className={styles.fieldDivided}
+          />{" "}
+          <input
+            type="text"
+            placeholder="Catch Phrase"
+            onChange={(e) => handlecatchPhrase(e.target.value)}
+            required
+            className={styles.fieldDivided}
+          />
+        </li>
+        <li>
+          <input
+            type="text"
+            placeholder="Business Services"
+            onChange={(e) => handleBsChange(e.target.value)}
+            className={styles.fieldDivided}
+          />{" "}
+          <input
+            type="text"
+            placeholder="https://website"
+            onChange={(e) => handleWebsiteChange(e.target.value)}
+            required
+            className={styles.fieldDivided}
+          />
+        </li>
+
+        <li>
+          <label>
+            Address <span className="required">*</span>
+          </label>
+          <input
+            type="text"
+            placeholder="City"
+            onChange={(e) => handleCityChange(e.target.value)}
+            required
+            className={styles.fieldDivided}
+          />{" "}
+          <input
+            placeholder="Street"
+            type="text"
+            onChange={(e) => handleStreetChange(e.target.value)}
+            required
+            className={styles.fieldDivided}
+          />
+        </li>
+        <li>
+          <input
+            type="text"
+            placeholder="Suite"
+            onChange={(e) => handlesuiteChange(e.target.value)}
+            required
+            className={styles.fieldDivided}
+          />{" "}
+          <input
+            type="number"
+            placeholder="Zip Code"
+            onChange={(e) => handleCodeChange(e.target.value)}
+            required
+            className={styles.fieldDivided}
+          />
+        </li>
+        <li>
+          <label>
+            lat.Lang <span className="required"></span>
+          </label>
+
+          <input
+            type="text"
+            placeholder="Latitude & Longitude"
+            onChange={(e) => handlePlaceChange(e.target.value)}
+            className={styles.latlong}
+          />
+          <button className={styles.click} onClick={handlelocation}>
+            Click
+          </button>
+        </li>
+        <button onClick={handleSubmit} className={styles.Submit}>
+          Submit
+        </button>
+      </ul>
+    </form>
   );
 }
 

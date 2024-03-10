@@ -1,9 +1,13 @@
-import Datatable from "../Table/Datatable";
+import React, { Suspense } from "react";
+import Spinner from "../../utils/spineer";
+const Datatable = React.lazy(() => import("../Table/Datatable"));
 
 function Hero() {
   return (
     <div>
-      <Datatable />
+      <Suspense fallback={<Spinner />}>
+        <Datatable />
+      </Suspense>
     </div>
   );
 }

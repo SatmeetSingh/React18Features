@@ -1,42 +1,126 @@
-.div {
-  background-color: antiquewhite;
-  width: 150%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-.box {
-  min-width: 100%;
-  max-width: 50%;
-  min-height: 70vh;
-  background-color: rgba(255, 255, 255, 0.387);
-  box-shadow: 12px 25px 20px rgba(0, 0, 0, 0.3);
-  margin-top: 50px;
+
+* {
+  font-family: "Poppins";
+}
+.formstyle p {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+}
+.formstyle {
   position: relative;
+  margin: 10px auto;
+  max-width: 400px;
+  padding: 20px 12px 10px 20px;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  background-color: #eeeeee;
+  border-radius: 5px;
 }
-
-.form {
-  padding: 40px;
-  display: flex;
+.formstyle li {
+  padding: 0;
+  display: block;
+  list-style: none;
+  margin: 8px 0 0 0;
+  font-family: "Poppins", sans-serif;
 }
-
-.name {
-  width: 300px;
+.formstyle label {
+  margin: 0 0 3px 0;
+  padding: 0px;
+  display: block;
+  font-weight: bold;
+  font-size: 15px;
 }
-
-.gap {
-  display: flex;
-  justify-content: space-between;
-  gap: 120px;
-}
-
-.btn {
-  width: 70px;
+.formstyle input[type="text"],
+.formstyle input[type="date"],
+.formstyle input[type="datetime"],
+.formstyle input[type="number"],
+.formstyle input[type="search"],
+.formstyle input[type="time"],
+.formstyle input[type="url"],
+.formstyle input[type="email"],
+textarea,
+select {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: 1px solid #bebebe;
+  border-radius: 5px;
   padding: 5px;
+  margin: 0px;
+
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  outline: none;
+}
+.formstyle input[type="text"]:focus,
+.formstyle input[type="date"]:focus,
+.formstyle input[type="datetime"]:focus,
+.formstyle input[type="number"]:focus,
+.formstyle input[type="search"]:focus,
+.formstyle input[type="time"]:focus,
+.formstyle input[type="url"]:focus,
+.formstyle input[type="email"]:focus,
+.formstyle textarea:focus,
+.formstyle select:focus {
+  -moz-box-shadow: 0 0 8px #3c3633;
+  -moz-box-shadow: 0 0 8px #3c3633;
+  -webkit-box-shadow: 0 0 8px #3c3633;
+  box-shadow: 0 0 8px #3c3633;
+  border: 1px solid #3c3633;
+}
+
+.formstyle .fieldDivided {
+  width: 49%;
+}
+
+.formstyle .fieldlong {
+  width: 100%;
+}
+.formstyle .latlong {
+  position: relative;
+  width: 100%;
+}
+.formstyle .fieldselect {
+  width: 100%;
+}
+.formstyle .fieldtextarea {
+  height: 100px;
+}
+
+.formstyle .Submit {
+  width: 100%;
+  height: 40px;
+  background: #000;
+  padding: 8px 15px 8px 15px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 10px;
+}
+.Submit:hover {
+  background: #191919;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.formstyle .click {
+  width: 20%;
+  background: #000;
+  padding: 6px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
   position: absolute;
-  right: 0%;
-  top: 20%;
-  border-radius: 9999px;
+  right: 3.4%;
+  bottom: 10%;
+  border-radius: 3px;
+}
+.formstyle .required {
+  color: red;
 }

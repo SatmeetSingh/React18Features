@@ -1,0 +1,42 @@
+/* .div {
+  background-color: antiquewhite;
+  width: 150%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box {
+  min-width: 100%;
+  max-width: 50%;
+  min-height: 70vh;
+  background-color: rgba(255, 255, 255, 0.387);
+  box-shadow: 12px 25px 20px rgba(0, 0, 0, 0.3);
+  margin-top: 50px;
+  position: relative;
+}
+
+.form {
+  padding: 40px;
+  display: flex;
+}
+
+.name {
+  width: 300px;
+}
+
+.gap {
+  display: flex;
+  justify-content: space-between;
+  gap: 120px;
+}
+
+.btn {
+  width: 70px;
+  padding: 5px;
+  position: absolute;
+  right: 0%;
+  top: 20%;
+  border-radius: 9999px;
+} */

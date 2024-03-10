@@ -1,21 +1,46 @@
-import Modal from "../Components/Form/Model";
+import { NavLink } from "react-router-dom";
 import FormData from "../Components/Form/formData";
 import Hero from "../Components/MainPage/Hero";
 import NavBar from "../Components/Navbar/NavBar";
-
 import useAPI from "../utils/Context";
+import { useState } from "react";
 
 function Home() {
-  const { handleOpen, open } = useAPI();
+  const { handleOpen } = useAPI();
+  // console.log(FormData()) VirtualDom
+  const [showForm, setShowForm] = useState(false);
+
+  const toggleForm = (value) => {
+    setShowForm(value);
+  };
+
   return (
-    <>
+    <div style={{ position: "relative" }}>
       <NavBar />
       <Hero />
-      <button onClick={handleOpen}>Form</button>
-      <Modal isOpen={open}>
-        <FormData />
-      </Modal>
-    </>
+      <NavLink
+        onClick={() => {
+          handleOpen();
+          toggleForm(true);
+        }}
+        style={{
+          position: "absolute",
+          color: "#fff",
+          left: "150px",
+          backgroundColor: "#000",
+          padding: "7px 20px",
+          borderRadius: "5px",
+          textDecoration: "none",
+        }}
+      >
+        Add User <i className="fa-solid fa-user-plus"></i>
+      </NavLink>
+      {showForm && (
+        <div style={{ position: "absolute", top: "15%", right: "0%" }}>
+          <FormData toggleForm={toggleForm} />
+        </div>
+      )}
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import FetchData from "../APi/User";
+// import Geolocation from "../APi/geolocation";
 
 export const DataContext = createContext();
 
@@ -40,6 +41,7 @@ export function APIContextProvider({ children }) {
 
   const handleOpen = () => {
     setOpen(true);
+    // console.log("handle");
   };
   const Datafetch = async () => {
     const data = await FetchData();
@@ -47,10 +49,17 @@ export function APIContextProvider({ children }) {
     setUsers(data);
   };
 
+  // const geoData = async () => {
+  //   const data1 = await Geolocation();
+  //   console.log(data1);
+  // };
+
   useEffect(() => {
     Datafetch();
+    // geoData();
   }, []);
 
+  // Filter the user Data by name
   const handleChange = (e) => {
     setName(e.target.value);
     setUsers(() =>
@@ -59,6 +68,10 @@ export function APIContextProvider({ children }) {
       })
     );
   };
+
+  {
+    /* Debaounce on All Input Field */
+  }
 
   debounce();
   const nameChange = (value) => {
@@ -169,6 +182,8 @@ export function APIContextProvider({ children }) {
     console.log("location");
   };
 
+  // Using UseMemo to Prevent Unwanted Rerender
+
   const contextValue = useMemo(
     () => ({
       value,
@@ -235,6 +250,8 @@ export function APIContextProvider({ children }) {
     <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
   );
 }
+
+// Debounce Function
 
 const debounce = (func, delay) => {
   let timeoutId;

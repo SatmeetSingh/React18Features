@@ -6,14 +6,22 @@ function NavBar() {
 
   return (
     <div className={styles.navbar}>
-      <h1>React 18 Features</h1>
-
-      <input
-        type="text"
-        placeholder="Search..."
-        value={name}
-        onChange={handleChange}
-      ></input>
+      <div className={styles.logo}>
+        <img
+          src="reactlogo.png"
+          alt="React18Logo"
+          style={{ width: "100px", height: "70px" }}
+        />
+      </div>
+      <div className={styles.NavSearch}>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={name}
+          onChange={handleChange}
+        ></input>
+        <i className="fa-solid fa-magnifying-glass"></i>
+      </div>
     </div>
   );
 }
