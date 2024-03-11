@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import styles from "./form.module.css";
 import useAPI from "../../utils/Context";
+import { useState } from "react";
 
 function FormData({ toggleForm }) {
   const {
@@ -19,10 +20,31 @@ function FormData({ toggleForm }) {
     handleBsChange,
     handleSubmit,
     handleClose,
-    handlelocation,
   } = useAPI();
+
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+
+  const handleLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setLatitude(latitude.toFixed(6));
+          setLongitude(longitude.toFixed(6));
+          handlePlaceChange(`${latitude.toFixed(6)}, ${longitude.toFixed(6)}`);
+        },
+        (error) => {
+          console.error("Error getting location:", error);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser.");
+    }
+  };
+
   return (
-    <form className={styles.formstyle}>
+    <form className={styles.formstyle} onSubmit={(e) => e.preventDefault()}>
       <h1>Add New User</h1>
       <p
         onClick={() => {
@@ -93,14 +115,12 @@ function FormData({ toggleForm }) {
             type="text"
             placeholder="Company Name"
             onChange={(e) => handleCompanyname(e.target.value)}
-            required
             className={styles.fieldDivided}
           />{" "}
           <input
             type="text"
             placeholder="Catch Phrase"
             onChange={(e) => handlecatchPhrase(e.target.value)}
-            required
             className={styles.fieldDivided}
           />
         </li>
@@ -163,11 +183,12 @@ function FormData({ toggleForm }) {
           <input
             type="text"
             placeholder="Latitude & Longitude"
+            value={`${latitude}, ${longitude}`}
             onChange={(e) => handlePlaceChange(e.target.value)}
             className={styles.latlong}
           />
-          <button className={styles.click} onClick={handlelocation}>
-            Click
+          <button className={styles.click} onClick={handleLocation}>
+            Click <i className="fa-solid fa-location-dot"></i>
           </button>
         </li>
         <button onClick={handleSubmit} className={styles.Submit}>

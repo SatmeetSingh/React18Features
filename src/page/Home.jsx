@@ -26,7 +26,7 @@ function Home() {
         style={{
           position: "absolute",
           color: "#fff",
-          left: "150px",
+          left: "250px",
           backgroundColor: "#000",
           padding: "7px 20px",
           borderRadius: "5px",
@@ -36,7 +36,7 @@ function Home() {
         Add User <i className="fa-solid fa-user-plus"></i>
       </NavLink>
       {showForm && (
-        <div style={{ position: "absolute", top: "15%", right: "0%" }}>
+        <div style={{ position: "absolute", top: "18%", right: "0%" }}>
           <FormData toggleForm={toggleForm} />
         </div>
       )}

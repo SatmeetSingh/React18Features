@@ -49,14 +49,8 @@ export function APIContextProvider({ children }) {
     setUsers(data);
   };
 
-  // const geoData = async () => {
-  //   const data1 = await Geolocation();
-  //   console.log(data1);
-  // };
-
   useEffect(() => {
     Datafetch();
-    // geoData();
   }, []);
 
   // Filter the user Data by name
@@ -169,7 +163,21 @@ export function APIContextProvider({ children }) {
       ...prevData,
       id: users.length + 1,
     }));
+    console.log(users.length + 1);
+    // if (
+    //   defaultUserInput.name &&
+    //   defaultUserInput.user &&
+    //   defaultUserInput.email &&
+    //   defaultUserInput.phoneNumber &&
+    //   defaultUserInput.website &&
+    //   defaultUserInput.street &&
+    //   defaultUserInput.city &&
+    //   defaultUserInput.code
+    // ) {
     setUsers((prevUser) => [...prevUser, data]);
+    // } else {
+    //   console.log("error");
+    // }
   };
 
   const handleDelete = (UserId) => {
@@ -178,22 +186,14 @@ export function APIContextProvider({ children }) {
     });
   };
 
-  const handlelocation = () => {
-    console.log("location");
-  };
-
   // Using UseMemo to Prevent Unwanted Rerender
 
   const contextValue = useMemo(
     () => ({
       value,
-      setValue,
       name,
-      setName,
       users,
-      setUsers,
       data,
-      setData,
       open,
       handleOpen,
       handleClose,
@@ -213,17 +213,12 @@ export function APIContextProvider({ children }) {
       handleChange,
       handleSubmit,
       handleDelete,
-      handlelocation,
     }),
     [
       value,
-      setValue,
       name,
-      setName,
       users,
-      setUsers,
       data,
-      setData,
       handlenameChange,
       handleuserChange,
       handlePhoneNumberChange,
@@ -242,7 +237,6 @@ export function APIContextProvider({ children }) {
       handleOpen,
       handleClose,
       handleDelete,
-      handlelocation,
     ]
   );
 
